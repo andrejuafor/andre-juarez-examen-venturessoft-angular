@@ -1,0 +1,15 @@
+@import '../../../../assets/branding/colors.scss';
+
+button {
+  border-radius: 50px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.flat {
+  background-color: $bright-blue;
+  color: $white !important;
+}
+
+.stroked {}

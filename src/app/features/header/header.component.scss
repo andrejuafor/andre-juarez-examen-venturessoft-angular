@@ -1,0 +1,15 @@
+header {
+  max-width: 1320px;
+  margin: 0 auto;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1.5em;
+}
+
+.actions-wrapper {
+  width: 295px;
+  display: flex;
+  justify-content: space-between;
+}
