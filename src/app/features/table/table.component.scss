@@ -1,0 +1,87 @@
+@import '../../../assets/branding/colors.scss';
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10em;
+  margin-bottom: 3em;
+}
+
+.container {
+  width: 80%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+
+  h2 {
+    font-size: 5em;
+    text-align: center;
+    line-height: 1;
+
+    span {
+      color: $bright-blue;
+      font-size: 1em;
+    }
+  }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 2.5em;
+}
+
+.table-title-row {
+  height: 55px;
+  font-weight: 600;
+  letter-spacing: .6px;
+  text-align: center;
+}
+
+.table-items-row {
+  height: 55px;
+  text-align: center;
+  font-size: 1em;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  white-space: break-spaces;
+}
+
+.table-items-row--first__column {
+  text-align: left;
+}
+
+.check-icon {
+  color: $green-success;
+}
+
+.table-actions-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 810px) {
+  .title {
+    h2 {
+      font-size: 3.5em;
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .title {
+    margin-bottom: 2em;
+
+    h2 {
+      font-size: 2.5em;
+    }
+  }
+
+  .container {
+    width: 95%;
+  }
+}
