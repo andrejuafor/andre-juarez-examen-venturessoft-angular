@@ -1,1 +1,38 @@
-<p>table works!</p>
+<section>
+  <div class="container">
+    <div class="title">
+      <h2>
+        Link your business card <br> to <span>unlock cashback</span> offers
+      </h2>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <tr class="table-title-row">
+          <th></th>
+          <th>No card linking required</th>
+          <th>Link your card to get</th>
+        </tr>
+        @for (item of list; track item) {
+        <tr class="table-items-row">
+          <td class="table-items-row--first__column">{{ item.title }}</td>
+          <td>
+            @if (item.no_card_status){
+            <fa-icon class="check-icon" [icon]="faCircleCheck">
+            </fa-icon>
+            }
+          </td>
+          <td>
+            @if (item.link_card_status){
+            <fa-icon class="check-icon" [icon]="faCircleCheck">
+            </fa-icon>
+            }
+          </td>
+        </tr>
+        }
+      </table>
+    </div>
+    <div class="table-actions-wrapper">
+      <app-button [type]="'flat'" [title]="'Link Your card'" [icon]="'keyboard_arrow_right'"></app-button>
+    </div>
+  </div>
+</section>
