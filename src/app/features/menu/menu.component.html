@@ -6,10 +6,10 @@
       </h2>
     </div>
     <div class="categories-wrapper">
-      @for (categorie of categories(); track categorie.name) {
-      <span class="category-chip--item" [ngClass]="{ 'active': currentCategory === categorie.name }"
-        (click)="filterByCategory(categorie.name)">
-        {{categorie.name}}
+      @for (categorie of categories(); track categorie.description) {
+      <span class="category-chip--item" [ngClass]="{ 'active': currentCategory === categorie.description }"
+        (click)="filterByCategory(categorie.description)">
+        {{categorie.description}}
       </span>
       }
     </div>
