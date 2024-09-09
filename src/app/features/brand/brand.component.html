@@ -18,12 +18,10 @@
           <fa-icon [icon]="faTableCells"></fa-icon>
         </button>
         <div class="brand-header__actions--filter">
-          <select>
+          <select (change)="onSortChange($event)">
             <option value="" selected>{{ 'brand.sort_by' | translate }}</option>
             <option value="brandNameAsc">{{ 'brand.sort_options.option_1' | translate }}</option>
             <option value="brandNameDesc">{{ 'brand.sort_options.option_2' | translate }}</option>
-            <option value="descriptionAsc">{{ 'brand.sort_options.option_3' | translate }}</option>
-            <option value="descriptionDesc">{{ 'brand.sort_options.option_4' | translate }}</option>
           </select>
         </div>
       </div>
@@ -53,6 +51,7 @@
       <img src="/assets/loaders/loader.gif" alt="loading">
     </div>
     }
+    @if (!hasAllCoupons()) {
     <div class="pagination">
       <button class="pagination-button" (click)="changePage(0)" [disabled]="currentPage === 0"
         [ngClass]="{ 'disable': currentPage === 0 }">
@@ -81,10 +80,18 @@
       </button>
     </div>
     <div class="brand-footer">
-      <a href="">
+      <a routerLink="/coupons">
         {{ 'brand.more_instant_coupons' | translate }}
         <fa-icon [icon]="faChevronRight"></fa-icon>
       </a>
     </div>
+    } @else {
+    <div class="brand-footer">
+      <a routerLink="/">
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
+        {{ 'login.back' | translate }}
+      </a>
+    </div>
+    }
   </div>
 </section>

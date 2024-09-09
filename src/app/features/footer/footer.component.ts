@@ -20,7 +20,6 @@ export class FooterComponent {
 
   public changeLang(lang: any): void {
     this.translationService.setLanguage(lang.target.value)
-    // location.href = `/${lang.target.value}`;
   }
 
 }

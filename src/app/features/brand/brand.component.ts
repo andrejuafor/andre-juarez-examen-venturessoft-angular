@@ -7,11 +7,12 @@ import { Subscription } from 'rxjs';
 import { BrandService } from './brand.service';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-brand',
   standalone: true,
-  imports: [FontAwesomeModule, CommonModule, SharedModule, FormsModule, TranslateModule],
+  imports: [FontAwesomeModule, CommonModule, SharedModule, FormsModule, TranslateModule, RouterModule],
   templateUrl: './brand.component.html',
   styleUrl: './brand.component.scss'
 })
@@ -23,16 +24,24 @@ export class BrandComponent {
   public faChevronLeft = faChevronLeft;
   public currentDisplayListView = signal<string>('gallery');
   public couponsList = signal<any[]>([]);
+  public couponsAll = signal<any[]>([]);
   public currentCategory = signal<string>('');
   public paginatedItems = signal<any[]>([]);
   public showLoader = signal<boolean>(false);
+  public hasAllCoupons = signal<boolean>(false);
   public currentPage: number = 0;
   public itemsPerPage: number = 7;
 
   constructor(
+    private router: Router,
     private brandService: BrandService,
   ) {
     this.filterCouponsById();
+    this.setViewComponents();
+  }
+
+  private setViewComponents(): void {
+    this.hasAllCoupons.set(this.router.url.split('/')[1] === 'coupons' ? true : false);
   }
 
   private filterCouponsById() {
@@ -51,6 +60,7 @@ export class BrandComponent {
     const subscribe = this.brandService.getBrandCoupons(idMenu).subscribe((data: any) => {
       this.showLoader.set(false);
       this.currentPage = 0;
+      this.couponsAll.set(this.normalizeEndpointResponse(data.menuItems));
       this.couponsList.set(this.normalizeEndpointResponse(data.menuItems));
       this.paginateItems();
     }, err => {
@@ -79,6 +89,29 @@ export class BrandComponent {
         description: coupon['descripción'],
         hasInstantCoupon: true,
       };
+    });
+  }
+
+  onSortChange(order: any) {
+    if (order.target.value === 'brandNameAsc') {
+      this.sortBrandsAscending();
+    } else if (order.target.value === 'brandNameDesc') {
+      this.sortBrandsDescending();
+    } else {
+      this.couponsList.set(this.couponsAll());
+    }
+    this.paginateItems();
+  }
+
+  private sortBrandsAscending(): void {
+    this.couponsList().sort((a, b) => {
+      return a.nombreMarca.localeCompare(b.nombreMarca);
+    });
+  }
+
+  private sortBrandsDescending(): void {
+    this.couponsList().sort((a, b) => {
+      return b.nombreMarca.localeCompare(a.nombreMarca);
     });
   }
 
