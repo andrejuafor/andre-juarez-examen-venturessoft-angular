@@ -1,0 +1,49 @@
+<div class="modal">
+  <div class="modal--box">
+    <div class="banner-section">
+      <h2>
+        {{ 'table.title' | translate }} {{ 'table.title_blue' | translate }} {{ 'table.title_end' |
+        translate }}
+      </h2>
+    </div>
+    <div class="login-section">
+      <div class="login-close-section">
+        <fa-icon [icon]="faClose" (click)="closeModal()">
+        </fa-icon>
+      </div>
+      <div class="login-title">
+        <h3>
+          {{ 'navbar.log_in' | translate }}
+        </h3>
+      </div>
+      <div class="card-login__form" [formGroup]="loginForm">
+        <div class="form-group">
+          <label class="form-label">
+            {{ 'login.username' | translate }}*:
+          </label>
+          <input class="form-input" formControlName="username" placeholder="{{ 'login.username' | translate }}"
+            type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            {{ 'login.password' | translate }}*:
+          </label>
+          <div class="input-password-wrapper">
+            <input class="form-input" formControlName="password" placeholder="{{ 'login.password' | translate }}"
+              [type]="showPassword() ? 'text' : 'password'">
+            <div class="input-password-wrapper--icon">
+              <fa-icon (click)="showPassword.set(!showPassword())" class="check-icon"
+                [icon]="showPassword() ? faEye : faEyeSlash"></fa-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="login-footer">
+        <div class="sing-up-wrapper">
+          <a (click)="goToRegisterCheckout();">{{ 'login.create_account' | translate }}</a>
+        </div>
+        <app-button [type]="'flat'" [title]="'navbar.log_in' | translate" [icon]="''" (click)="login()"></app-button>
+      </div>
+    </div>
+  </div>
+</div>

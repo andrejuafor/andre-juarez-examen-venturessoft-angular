@@ -10,7 +10,9 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
   template: `
     <button [ngClass]="type">
       {{ title }}
-       <fa-icon [icon]="faChevronRight"></fa-icon>
+       @if(icon) {
+        <fa-icon [icon]="faChevronRight"></fa-icon>
+       }
     </button>
   `,
   standalone: true,
@@ -21,6 +23,7 @@ export class ButtonComponent {
   @Input() title!: string;
   @Input() icon!: string;
   @Input() type!: string;
+  @Input() width!: string;
 
   public faChevronRight = faChevronRight
 }

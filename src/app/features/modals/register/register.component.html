@@ -1,0 +1,64 @@
+<div class="modal">
+  <div class="modal--box">
+    <div class="login-section">
+      <div class="login-close-section">
+        <fa-icon [icon]="faClose" (click)="closeModal()">
+        </fa-icon>
+      </div>
+      <div class="login-title">
+        <h3>
+          {{ 'login.create_account' | translate }}
+        </h3>
+      </div>
+      <div class="card-login__form" [formGroup]="registerForm">
+        <div class="form-group">
+          <label class="form-label">
+            {{ 'login.username' | translate }}*:
+          </label>
+          <input class="form-input" formControlName="username" placeholder="{{ 'login.username' | translate }}"
+            type="text" [class.is-invalid]="isControlInvalid('username')" [class.is-valid]="isControlValid('username')">
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            Email*:
+          </label>
+          <input class="form-input" formControlName="email" placeholder="Email" type="text"
+            [class.is-invalid]="isControlInvalid('email')" [class.is-valid]="isControlValid('email')">
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            {{ 'login.password' | translate }}*:
+          </label>
+          <div class="input-password-wrapper">
+            <input class="form-input" formControlName="password" placeholder="{{ 'login.password' | translate }}"
+              [type]="showPassword() ? 'text' : 'password'" [class.is-invalid]="isControlInvalid('password')"
+              [class.is-valid]="isControlValid('password')">
+            <div class="input-password-wrapper--icon">
+              <fa-icon (click)="showPassword.set(!showPassword())" class="check-icon"
+                [icon]="showPassword() ? faEye : faEyeSlash"></fa-icon>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            {{ 'login.confirm_password' | translate }}*:
+          </label>
+          <input class="form-input" formControlName="confirm_password"
+            placeholder="{{ 'login.confirm_password' | translate }}" type="password">
+        </div>
+      </div>
+      <div class="login-footer">
+        <div class="sing-up-wrapper">
+          <a (click)="backStep();">{{ 'login.back' | translate }}</a>
+        </div>
+        <app-button [type]="'flat'" [title]="'login.create_account' | translate" [icon]="''"
+          (click)="validateForm()"></app-button>
+      </div>
+    </div>
+    <div class="banner-section">
+      <h2>
+        {{ 'login.register_legend' | translate }}
+      </h2>
+    </div>
+  </div>
+</div>

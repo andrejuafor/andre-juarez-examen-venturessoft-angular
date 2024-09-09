@@ -59,6 +59,14 @@ export const locale = {
     detail: {
       title: "Desbloquea todo el potencial",
       cashback: "Reembolso",
+    },
+    login: {
+      username: "Nombre de usuario",
+      password: "Contraseña",
+      create_account: "Crea cuenta",
+      confirm_password: "Confirmar contraseña",
+      back: "Regresar",
+      register_legend: "¡Estas a un clic de aprovechar millones de ofertas!"
     }
   }
 }
