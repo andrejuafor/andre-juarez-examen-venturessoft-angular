@@ -5,37 +5,37 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-brand-card-item',
+  selector: 'app-brand-list-item',
   standalone: true,
   template: `
-    <mat-card appearance="outlined">
-      <div class="card-image-wrapper">
-        <img mat-card-image [src]="logo" alt="brand logo">
-      </div>
-      @if (hasInstantCoupon){
-        <span class="tag">
-          <fa-icon [icon]="faMoneyBill"></fa-icon>
-          Instan Coupon
-        </span>
-      }
-      <div class="card-body">
-        <mat-card-header>
-          <mat-card-subtitle>{{ brandName }}</mat-card-subtitle>
-          <mat-card-title>{{ brandDescription }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-actions>
+    <mat-card appearance="outlined" class="card">
+      <div class="card-wrapper">
+        <div class="card-brand-name">
+          <div class="card-image-wrapper">
+            <img [src]="logo" alt="brand logo">
+          </div>
+          <div class="brand-titles-wrapper">
+            <mat-card-subtitle>{{ brandName }}</mat-card-subtitle>
+            <mat-card-title>{{ brandDescription }}</mat-card-title>
+          </div>
+        </div>
+        <div class="brand-actions-wrapper">
+          <span class="tag">
+            <fa-icon [icon]="faMoneyBill"></fa-icon>
+            Instan Coupon
+          </span>
           <button mat-button>
             Get Coupon 
             <fa-icon [icon]="faArrowRight"></fa-icon>
           </button>
-        </mat-card-actions>
+        </div>
       </div>
     </mat-card>
   `,
   imports: [MatCardModule, MatButtonModule, FontAwesomeModule],
-  styleUrl: './brand-card-item.component.scss'
+  styleUrl: './brand-list-item.component.scss'
 })
-export class BrandCardItemComponent {
+export class BrandListItemComponent {
   @Input() brandDescription!: string;
   @Input() brandName!: string;
   @Input() logo!: string;
@@ -45,4 +45,3 @@ export class BrandCardItemComponent {
   public faMoneyBill = faMoneyBill;
   public faArrowRight = faArrowRight;
 }
-
