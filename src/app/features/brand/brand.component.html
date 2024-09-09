@@ -3,7 +3,9 @@
     <div class="brand-header">
       <div class="brand-header__title">
         <h5>
-          Featured Instant Coupons ({{ couponsList().length }})
+          {{ 'brand.title' | translate }}
+          {{ 'menu.categories.' + currentCategory() | translate }}
+          ({{ couponsList().length }})
         </h5>
       </div>
       <div class="brand-header__actions">
@@ -17,11 +19,11 @@
         </button>
         <div class="brand-header__actions--filter">
           <select>
-            <option value="" selected>SORT BY</option>
-            <option value="brandNameAsc">Nombre de la marca A - Z</option>
-            <option value="brandNameDesc">Nombre de la marca Z - A</option>
-            <option value="descriptionAsc">Descripción de marca A - Z</option>
-            <option value="descriptionDesc">Descripción de marca Z - A</option>
+            <option value="" selected>{{ 'brand.sort_by' | translate }}</option>
+            <option value="brandNameAsc">{{ 'brand.sort_options.option_1' | translate }}</option>
+            <option value="brandNameDesc">{{ 'brand.sort_options.option_2' | translate }}</option>
+            <option value="descriptionAsc">{{ 'brand.sort_options.option_3' | translate }}</option>
+            <option value="descriptionDesc">{{ 'brand.sort_options.option_4' | translate }}</option>
           </select>
         </div>
       </div>
@@ -61,7 +63,11 @@
         [ngClass]="{ 'disable': currentPage === 0 }">
         <fa-icon [icon]="faChevronLeft"></fa-icon>
       </button>
-      <span class="pagination-legend">Página {{ currentPage + 1 }} de {{ paginatedItems().length }}</span>
+      <span class="pagination-legend">
+        {{ 'brand.page' | translate }}
+        {{ currentPage + 1 }}
+        {{ 'brand.of' | translate }}
+        {{ paginatedItems().length }}</span>
       <button class="pagination-button" (click)="changePage(currentPage + 1)"
         [disabled]="currentPage === paginatedItems().length - 1"
         [ngClass]="{ 'disable': currentPage === paginatedItems().length - 1 }">
@@ -76,7 +82,7 @@
     </div>
     <div class="brand-footer">
       <a href="">
-        MORE INSTANT COUPONS
+        {{ 'brand.more_instant_coupons' | translate }}
         <fa-icon [icon]="faChevronRight"></fa-icon>
       </a>
     </div>

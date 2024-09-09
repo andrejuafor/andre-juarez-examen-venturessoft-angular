@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class BrandService {
-  private setIdMenuFilter = new BehaviorSubject<number | string>('')
+  private setIdMenuFilter = new BehaviorSubject<any>('')
   public currentIdMenuFilter = this.setIdMenuFilter.asObservable();
 
   constructor(private http: HttpClient) { }

@@ -6,11 +6,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { Subscription } from 'rxjs';
 import { BrandService } from './brand.service';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brand',
   standalone: true,
-  imports: [FontAwesomeModule, CommonModule, SharedModule, FormsModule],
+  imports: [FontAwesomeModule, CommonModule, SharedModule, FormsModule, TranslateModule],
   templateUrl: './brand.component.html',
   styleUrl: './brand.component.scss'
 })
@@ -22,6 +23,7 @@ export class BrandComponent {
   public faChevronLeft = faChevronLeft;
   public currentDisplayListView = signal<string>('gallery');
   public couponsList = signal<any[]>([]);
+  public currentCategory = signal<string>('');
   public paginatedItems = signal<any[]>([]);
   public showLoader = signal<boolean>(false);
   public currentPage: number = 0;
@@ -35,7 +37,11 @@ export class BrandComponent {
 
   private filterCouponsById() {
     const subscribe = this.brandService.currentIdMenuFilter.subscribe((data: any) => {
-      if (data) this.getBrandCoupons(`${data}`);
+      if (data) {
+        this.getBrandCoupons(`${data.idMenu}`);
+        this.currentCategory.set(data.description)
+      }
+
     });
     this.subscription.push(subscribe);
   }

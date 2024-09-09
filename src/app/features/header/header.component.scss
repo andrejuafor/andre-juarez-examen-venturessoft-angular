@@ -9,7 +9,10 @@ header {
 }
 
 .actions-wrapper {
-  width: 295px;
   display: flex;
   justify-content: space-between;
+
+  app-button {
+    margin-left: 0.5em;
+  }
 }

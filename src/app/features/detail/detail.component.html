@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title">
       <h3>
-        Unlock the full power
+        {{ 'detail.title' | translate }}
       </h3>
     </div>
     <div class="card-wrapper">
@@ -15,7 +15,8 @@
       }
     </div>
     <div class="detail-footer">
-      <app-button [type]="'flat'" [title]="'Link Your card'" [icon]="'keyboard_arrow_right'"></app-button>
+      <app-button [type]="'flat'" [title]="'navbar.link_your_card' | translate"
+        [icon]="'keyboard_arrow_right'"></app-button>
     </div>
   </div>
 </section>

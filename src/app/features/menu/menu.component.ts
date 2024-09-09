@@ -3,15 +3,18 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MenuService } from './menu.service';
 import { Subscription } from 'rxjs';
 import { BrandService } from '../brand/brand.service';
+import { TranslationService } from '../../../assets/i18n/translation.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
+
 export class MenuComponent {
   private subscription: Subscription[] = [];
   public currentCategory!: string;
@@ -19,23 +22,23 @@ export class MenuComponent {
 
   constructor(
     private menuService: MenuService,
-    private brandService: BrandService,
+    private brandService: BrandService
   ) {
     this.getCategories();
   }
 
 
-  public filterByCategory(category: string, id: number): void {
+  public filterByCategory(category: any): void {
     if (this.currentCategory !== category) {
-      this.currentCategory = category;
-      this.brandService.filterCouponsById(id)
+      this.currentCategory = category.description;
+      this.brandService.filterCouponsById(category)
     }
   }
 
   private getCategories() {
     const subscribe = this.menuService.getCategories().subscribe((data: any) => {
       this.categories.set(this.normalizeEndpointResponse(data.menuItems));
-      this.filterByCategory(this.categories()[0].description, this.categories()[0].idMenu)
+      this.filterByCategory(this.categories()[0])
     });
     this.subscription.push(subscribe);
   }
