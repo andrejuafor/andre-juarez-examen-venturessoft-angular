@@ -4,3 +4,9 @@
   <app-brand></app-brand>
   <app-detail></app-detail>
 </main>
+@if (hasLoginModalActive()) {
+<app-login></app-login>
+}
+@if (hasRegisterModalActive()) {
+<app-register></app-register>
+}

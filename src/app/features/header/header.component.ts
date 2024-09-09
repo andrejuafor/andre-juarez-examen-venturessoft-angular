@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoginService } from '../modals/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -10,5 +11,8 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  constructor(
+    public loginService: LoginService
+  ) { }
 
 }

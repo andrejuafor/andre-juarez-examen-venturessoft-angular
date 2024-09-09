@@ -59,6 +59,14 @@ export const locale = {
     detail: {
       title: "Unlock the full power",
       cashback: "Cashback",
+    },
+    login: {
+      username: "Username",
+      password: "Password",
+      create_account: "Create account",
+      confirm_password: "Confirm password",
+      back: "Back",
+      register_legend: "You are one click away from taking advantage of millions of offers!"
     }
   }
 }
