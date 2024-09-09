@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brand-list-item',
@@ -22,17 +23,17 @@ import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
         <div class="brand-actions-wrapper">
           <span class="tag">
             <fa-icon [icon]="faMoneyBill"></fa-icon>
-            Instan Coupon
+            {{ 'brand.instan_coupon' | translate }}
           </span>
           <button mat-button>
-            Get Coupon 
+            {{ 'brand.get_coupon' | translate }}
             <fa-icon [icon]="faArrowRight"></fa-icon>
           </button>
         </div>
       </div>
     </mat-card>
   `,
-  imports: [MatCardModule, MatButtonModule, FontAwesomeModule],
+  imports: [MatCardModule, MatButtonModule, FontAwesomeModule, TranslateModule],
   styleUrl: './brand-list-item.component.scss'
 })
 export class BrandListItemComponent {

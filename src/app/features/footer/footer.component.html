@@ -1,18 +1,18 @@
 <footer>
   <div class="footer-wrapper">
     <div class="menu-section">
-      <a>¿Quienes somos?</a>
-      <a>Terminos y condiciones</a>
-      <a>Aviso de privacidad</a>
+      <a translate="footer.who_are_we"></a>
+      <a translate="footer.terms"></a>
+      <a translate="footer.privacy_notice"></a>
       <a>Faq's</a>
     </div>
     <div class="lang-selected-section">
       <label for="">
         <fa-icon [icon]="faLanguage">
         </fa-icon>
-        <select>
-          <option value="">Español</option>
-          <option value="">Ingles</option>
+        <select (change)="changeLang($event)">
+          <option value="es" selected>Español</option>
+          <option value="en">English</option>
         </select>
       </label>
     </div>

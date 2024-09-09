@@ -2,19 +2,20 @@
   <div class="container">
     <div class="title">
       <h2>
-        Link your business card to <span>unlock cashback</span> offers
+        {{ 'table.title' | translate }} <span>{{ 'table.title_blue' | translate }}</span> {{ 'table.title_end' |
+        translate }}
       </h2>
     </div>
     <div class="table-wrapper">
       <table>
         <tr class="table-title-row">
           <th></th>
-          <th>No card linking required</th>
-          <th>Link your card to get</th>
+          <th>{{ 'table.column_title_1' | translate }}</th>
+          <th>{{ 'table.column_title_2' | translate }}</th>
         </tr>
         @for (item of list; track item) {
         <tr class="table-items-row">
-          <td class="table-items-row--first__column">{{ item.title }}</td>
+          <td class="table-items-row--first__column">{{ 'table.row_items.' + item.title | translate }}</td>
           <td>
             @if (item.no_card_status){
             <fa-icon class="check-icon" [icon]="faCircleCheck">
@@ -32,7 +33,8 @@
       </table>
     </div>
     <div class="table-actions-wrapper">
-      <app-button [type]="'flat'" [title]="'Link Your card'" [icon]="'keyboard_arrow_right'"></app-button>
+      <app-button [type]="'flat'" [title]="'navbar.link_your_card' | translate"
+        [icon]="'keyboard_arrow_right'"></app-button>
     </div>
   </div>
 </section>

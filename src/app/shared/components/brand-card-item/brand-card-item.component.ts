@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brand-card-item',
@@ -15,7 +16,7 @@ import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
       @if (hasInstantCoupon){
         <span class="tag">
           <fa-icon [icon]="faMoneyBill"></fa-icon>
-          Instan Coupon
+          {{ 'brand.instan_coupon' | translate }}
         </span>
       }
       <div class="card-body">
@@ -25,14 +26,14 @@ import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
         </mat-card-header>
         <mat-card-actions>
           <button mat-button>
-            Get Coupon 
+            {{ 'brand.get_coupon' | translate }}
             <fa-icon [icon]="faArrowRight"></fa-icon>
           </button>
         </mat-card-actions>
       </div>
     </mat-card>
   `,
-  imports: [MatCardModule, MatButtonModule, FontAwesomeModule],
+  imports: [MatCardModule, MatButtonModule, FontAwesomeModule, TranslateModule],
   styleUrl: './brand-card-item.component.scss'
 })
 export class BrandCardItemComponent {

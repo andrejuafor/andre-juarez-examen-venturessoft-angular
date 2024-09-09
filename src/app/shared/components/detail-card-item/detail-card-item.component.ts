@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-detail-card-item',
@@ -17,7 +18,7 @@ import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
       </span>
       <span class="tag">
         <fa-icon [icon]="faMoneyBill"></fa-icon>
-        Cashback
+        {{ 'detail.cashback' | translate }}
       </span>
       <div class="card-body">
         <mat-card-header>
@@ -27,7 +28,7 @@ import { faArrowRight, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
       </div>
     </mat-card>
   `,
-  imports: [MatCardModule, MatButtonModule, FontAwesomeModule],
+  imports: [MatCardModule, MatButtonModule, FontAwesomeModule, TranslateModule],
   styleUrl: './detail-card-item.component.scss'
 })
 export class DetailCardItemComponent {

@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { BrandService } from '../brand/brand.service';
 import { Subscription } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule, TranslateModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'
 })
