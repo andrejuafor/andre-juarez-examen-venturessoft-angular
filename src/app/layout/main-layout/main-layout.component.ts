@@ -3,11 +3,12 @@ import { TableComponent } from '../../features/table/table.component';
 import { MenuComponent } from '../../features/menu/menu.component';
 import { BrandComponent } from '../../features/brand/brand.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailComponent } from '../../features/detail/detail.component';
 
 @Component({
   selector: 'app-main-layout',
   standalone: true,
-  imports: [TableComponent, MenuComponent, BrandComponent],
+  imports: [TableComponent, MenuComponent, BrandComponent, DetailComponent],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss'
 })
