@@ -61,7 +61,7 @@ export class BrandComponent {
   }
 
   public changePage(pageIndex: number): void {
-    if (pageIndex >= 0 && pageIndex < this.paginatedItems.length) {
+    if (pageIndex >= 0 && pageIndex < this.paginatedItems().length) {
       this.currentPage = pageIndex;
     }
   }

@@ -26,6 +26,7 @@
         </div>
       </div>
     </div>
+    @if (!showLoader()) {
     @if (currentDisplayListView() === 'gallery') {
     <div class="gallery-view-wrapper">
       @for (coupon of paginatedItems()[currentPage]; track coupon.idItem) {
@@ -45,7 +46,7 @@
       }
     </div>
     }
-    @if (showLoader()) {
+    } @else {
     <div class="loader-wrapper">
       <img src="/assets/loaders/loader.gif" alt="loading">
     </div>

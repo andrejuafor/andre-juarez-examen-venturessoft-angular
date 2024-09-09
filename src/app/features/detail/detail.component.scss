@@ -1,0 +1,75 @@
+@import '../../../assets/branding/colors.scss';
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 6em 0 3em;
+  background: linear-gradient(to bottom, $bright-blue, $white);
+}
+
+.container {
+  width: 90%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+
+  h3 {
+    font-size: 4em;
+    color: $white;
+    text-align: center;
+    line-height: 1;
+  }
+}
+
+.card {
+  max-width: 280px;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 2em;
+}
+
+.detail-footer {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1174px) {
+  .card-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .card {
+    max-width: initial;
+  }
+}
+
+@media (max-width: 810px) {
+  .title {
+    h2 {
+      font-size: 3.5em;
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .title {
+    margin-bottom: 2em;
+
+    h2 {
+      font-size: 2.5em;
+    }
+  }
+
+  .container {
+    width: 95%;
+  }
+}
