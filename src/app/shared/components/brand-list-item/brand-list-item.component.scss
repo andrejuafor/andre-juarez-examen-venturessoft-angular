@@ -61,3 +61,19 @@ mat-card:hover {
     margin-right: 0.5em;
   }
 }
+
+@media (max-width: 1020px) {
+  .card-image-wrapper {
+    display: none;
+  }
+
+  .card-wrapper {
+    padding: 1.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-brand-name {
+    margin-bottom: 1em;
+  }
+}
