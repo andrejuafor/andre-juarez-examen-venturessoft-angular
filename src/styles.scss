@@ -37,6 +37,10 @@ button {
   transition: 0.2s;
 }
 
+select {
+  cursor: pointer;
+}
+
 mat-card {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.112) !important;
   border: 0 !important;
