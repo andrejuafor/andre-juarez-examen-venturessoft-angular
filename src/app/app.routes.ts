@@ -11,4 +11,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import("./layout/main-layout/main-layout.module").then((m) => m.MainLayoutModule),
   },
+  {
+    path: "coupons",
+    loadChildren: () =>
+      import("./views/all-coupons/all-coupons.module").then((m) => m.AllCouponsModule),
+  },
 ];
