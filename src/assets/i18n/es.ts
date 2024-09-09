@@ -67,6 +67,15 @@ export const locale = {
       confirm_password: "Confirmar contraseña",
       back: "Regresar",
       register_legend: "¡Estas a un clic de aprovechar millones de ofertas!"
+    },
+    linking_card: {
+      name_on_card: "Nombre de Tarjetahabiente",
+      card_number: "Numero de Tarjeta",
+      expiration_date: "Fecha de Expiración",
+      month: "MM",
+      year: "AAAA",
+      cancel: "Cancelar",
+      link_up: "Vincular",
     }
   }
 }

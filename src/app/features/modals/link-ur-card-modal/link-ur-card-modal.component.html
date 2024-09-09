@@ -1,0 +1,90 @@
+<div class="modal">
+  <div class="modal--box">
+    <div class="link-section">
+      <div class="modal-header">
+        <div class="link-title">
+          <h3>
+            {{ 'navbar.link_your_card' | translate }}
+          </h3>
+        </div>
+        <div class="link-close-section">
+          <fa-icon [icon]="faClose" (click)="closeModal()">
+          </fa-icon>
+        </div>
+      </div>
+      <form [formGroup]="cardForm" class="form">
+      </form>
+      <div class="card-link__form" [formGroup]="cardForm">
+        <div class="form-group">
+          <label class="form-label">
+            {{ 'linking_card.name_on_card' | translate }}*:
+          </label>
+          <input class="form-input" formControlName="cardholder"
+            placeholder="{{ 'linking_card.name_on_card' | translate }}" type="text"
+            [class.is-invalid]="isControlInvalid('cardholder')" [class.is-valid]="isControlValid('cardholder')">
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            {{ 'linking_card.card_number' | translate }}*:
+          </label>
+          <div class="card-input-item">
+            <div class="card-input">
+              <input type="text" placeholder="{{ 'linking_card.card_number' | translate }}" class="form-input"
+                maxlength="18" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                (input)="changeCard($event)" formControlName="card_number"
+                [class.is-invalid]="isControlInvalid('card_number')" [class.is-valid]="isControlValid('card_number')">
+            </div>
+            <div class="cards-options" [ngSwitch]=cardIcon()>
+              <img src="/assets/media/cards/tarjeta-de-credito.svg" *ngSwitchCase="''">
+              <img src="/assets/media/cards/tarjeta-de-credito.svg" *ngSwitchCase="'no-exits'">
+              <img src="/assets/media/cards/visa.svg" *ngSwitchCase="'visa'">
+              <img src="/assets/media/cards/mastercard.svg" *ngSwitchCase="'master'">
+              <img src="/assets/media/cards/american-express.svg" *ngSwitchCase="'amex'">
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group sm-input year-input-wrapper">
+            <label class="form-label">
+              {{ 'linking_card.expiration_date' | translate }}*:
+            </label>
+            <input type="text" id="donorMonth" placeholder="{{ 'linking_card.month' | translate }}" class="form-input"
+              maxlength="2" (input)="goToYearInput($event)"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57" formControlName="exp_month"
+              [class.is-invalid]="isControlInvalid('exp_month')" [class.is-valid]="isControlValid('exp_month')">
+          </div>
+          <div class="form-group sm-input">
+            <label class="form-label">
+              .
+            </label>
+            <input type="text" id="donorYear" placeholder="{{ 'linking_card.year' | translate }}" class="form-input"
+              maxlength="4" (input)="goToCvvInput($event)"
+              onkeypress="return event.charCode >= 48 && event.charCode <= 57" formControlName="exp_year"
+              [class.is-invalid]="isControlInvalid('exp_year')" [class.is-valid]="isControlValid('exp_year')">
+          </div>
+          <div class="form-group sm-input">
+            <label class="form-label">
+              CVV*
+            </label>
+            <div class="card-input-item">
+              <input type="password" id="donorCvv" placeholder="CVV" maxlength="4"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-input"
+                formControlName="cvv" [class.is-invalid]="isControlInvalid('cvv')"
+                [class.is-valid]="isControlValid('cvv')">
+              <div class="generic-card-icon">
+                <i class="fas fa-credit-card"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="linking-card-cancel-wrapper" (click)="closeModal();">
+          <a>{{ 'linking_card.cancel' | translate }}</a>
+        </div>
+        <app-button [type]="'flat'" [title]="'linking_card.link_up' | translate" [icon]="''"
+          (click)="validateForm()"></app-button>
+      </div>
+    </div>
+  </div>
+</div>

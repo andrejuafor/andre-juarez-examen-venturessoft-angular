@@ -3,6 +3,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { LinkUrCardModalService } from '../modals/link-ur-card-modal/link-ur-card-modal.service';
 
 @Component({
   selector: 'app-table',
@@ -40,4 +41,9 @@ export class TableComponent {
       link_card_status: true,
     },
   ]
+
+  constructor(
+    public linkUrCardModalService: LinkUrCardModalService,
+  ) {
+  }
 }

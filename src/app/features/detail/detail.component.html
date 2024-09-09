@@ -15,8 +15,8 @@
       }
     </div>
     <div class="detail-footer">
-      <app-button [type]="'flat'" [title]="'navbar.link_your_card' | translate"
-        [icon]="'keyboard_arrow_right'"></app-button>
+      <app-button [type]="'flat'" [title]="'navbar.link_your_card' | translate" [icon]="'keyboard_arrow_right'"
+        (click)="linkUrCardModalService.showLinkCardModal(true);"></app-button>
     </div>
   </div>
 </section>

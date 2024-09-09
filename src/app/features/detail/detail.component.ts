@@ -3,6 +3,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { BrandService } from '../brand/brand.service';
 import { Subscription } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { LinkUrCardModalService } from '../modals/link-ur-card-modal/link-ur-card-modal.service';
 
 @Component({
   selector: 'app-detail',
@@ -31,6 +32,7 @@ export class DetailComponent {
 
   constructor(
     private brandService: BrandService,
+    public linkUrCardModalService: LinkUrCardModalService,
   ) {
     for (let item of this.idMenuList) {
       this.getBrandCoupons(item.idMenu);
