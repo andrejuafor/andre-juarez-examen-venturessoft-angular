@@ -5,11 +5,12 @@ import { faList, faTableCells, faChevronRight, faChevronLeft } from '@fortawesom
 import { SharedModule } from '../../shared/shared.module';
 import { Subscription } from 'rxjs';
 import { BrandService } from './brand.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-brand',
   standalone: true,
-  imports: [FontAwesomeModule, CommonModule, SharedModule],
+  imports: [FontAwesomeModule, CommonModule, SharedModule, FormsModule],
   templateUrl: './brand.component.html',
   styleUrl: './brand.component.scss'
 })
@@ -21,29 +22,41 @@ export class BrandComponent {
   public faChevronLeft = faChevronLeft;
   public currentDisplayListView = signal<string>('gallery');
   public couponsList = signal<any[]>([]);
-  public paginatedItems: any[][] = [];
+  public paginatedItems = signal<any[]>([]);
+  public showLoader = signal<boolean>(false);
   public currentPage: number = 0;
   public itemsPerPage: number = 7;
 
   constructor(
     private brandService: BrandService,
   ) {
-    this.getBrandCoupons('2100');
+    this.filterCouponsById();
+  }
+
+  private filterCouponsById() {
+    const subscribe = this.brandService.currentIdMenuFilter.subscribe((data: any) => {
+      if (data) this.getBrandCoupons(`${data}`);
+    });
+    this.subscription.push(subscribe);
   }
 
   private getBrandCoupons(idMenu: string) {
+    this.showLoader.set(true);
     const subscribe = this.brandService.getBrandCoupons(idMenu).subscribe((data: any) => {
-      console.log(data);
+      this.showLoader.set(false);
+      this.currentPage = 0;
       this.couponsList.set(this.normalizeEndpointResponse(data.menuItems));
       this.paginateItems();
+    }, err => {
+      this.showLoader.set(false);
     });
     this.subscription.push(subscribe);
   }
 
   private paginateItems(): void {
-    this.paginatedItems = [];
+    this.paginatedItems.set([]);
     for (let i = 0; i < this.couponsList().length; i += this.itemsPerPage) {
-      this.paginatedItems.push(this.couponsList().slice(i, i + this.itemsPerPage));
+      this.paginatedItems().push(this.couponsList().slice(i, i + this.itemsPerPage));
     }
   }
 

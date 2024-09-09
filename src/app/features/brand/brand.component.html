@@ -3,7 +3,7 @@
     <div class="brand-header">
       <div class="brand-header__title">
         <h5>
-          Featured Instant Coupons (200)
+          Featured Instant Coupons ({{ couponsList().length }})
         </h5>
       </div>
       <div class="brand-header__actions">
@@ -18,13 +18,17 @@
         <div class="brand-header__actions--filter">
           <select>
             <option value="" selected>SORT BY</option>
+            <option value="brandNameAsc">Nombre de la marca A - Z</option>
+            <option value="brandNameDesc">Nombre de la marca Z - A</option>
+            <option value="descriptionAsc">Descripción de marca A - Z</option>
+            <option value="descriptionDesc">Descripción de marca Z - A</option>
           </select>
         </div>
       </div>
     </div>
     @if (currentDisplayListView() === 'gallery') {
     <div class="gallery-view-wrapper">
-      @for (coupon of paginatedItems[currentPage]; track coupon.description) {
+      @for (coupon of paginatedItems()[currentPage]; track coupon.idItem) {
       <div class="card">
         <app-brand-card-item [brandDescription]="coupon.description" [brandName]="coupon.nombreMarca"
           [logo]="coupon.imagen" [hasInstantCoupon]="coupon.hasInstantCoupon" [url]="coupon.idItem">
@@ -34,22 +38,38 @@
     </div>
     } @else {
     <div class="list-view-wrapper">
-      @for (coupon of paginatedItems[currentPage]; track coupon.description) {
+      @for (coupon of paginatedItems()[currentPage]; track coupon.idItem) {
       <app-brand-list-item [brandDescription]="coupon.description" [brandName]="coupon.nombreMarca"
         [logo]="coupon.imagen" [hasInstantCoupon]="coupon.hasInstantCoupon" [url]="coupon.idItem">
       </app-brand-list-item>
       }
     </div>
     }
+    @if (showLoader()) {
+    <div class="loader-wrapper">
+      <img src="/assets/loaders/loader.gif" alt="loading">
+    </div>
+    }
     <div class="pagination">
+      <button class="pagination-button" (click)="changePage(0)" [disabled]="currentPage === 0"
+        [ngClass]="{ 'disable': currentPage === 0 }">
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
+        <fa-icon [icon]="faChevronLeft"></fa-icon>
+      </button>
       <button class="pagination-button" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 0"
         [ngClass]="{ 'disable': currentPage === 0 }">
         <fa-icon [icon]="faChevronLeft"></fa-icon>
       </button>
-      <span class="pagination-legend">Página {{ currentPage + 1 }} de {{ paginatedItems.length }}</span>
+      <span class="pagination-legend">Página {{ currentPage + 1 }} de {{ paginatedItems().length }}</span>
       <button class="pagination-button" (click)="changePage(currentPage + 1)"
-        [disabled]="currentPage === paginatedItems.length - 1"
-        [ngClass]="{ 'disable': currentPage === paginatedItems.length - 1 }">
+        [disabled]="currentPage === paginatedItems().length - 1"
+        [ngClass]="{ 'disable': currentPage === paginatedItems().length - 1 }">
+        <fa-icon [icon]="faChevronRight"></fa-icon>
+      </button>
+      <button class="pagination-button" (click)="changePage(paginatedItems().length - 1)"
+        [disabled]="currentPage === paginatedItems().length - 1"
+        [ngClass]="{ 'disable': currentPage === paginatedItems().length - 1 }">
+        <fa-icon [icon]="faChevronRight"></fa-icon>
         <fa-icon [icon]="faChevronRight"></fa-icon>
       </button>
     </div>

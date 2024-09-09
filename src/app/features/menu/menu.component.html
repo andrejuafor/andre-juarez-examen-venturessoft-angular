@@ -8,7 +8,7 @@
     <div class="categories-wrapper">
       @for (categorie of categories(); track categorie.description) {
       <span class="category-chip--item" [ngClass]="{ 'active': currentCategory === categorie.description }"
-        (click)="filterByCategory(categorie.description)">
+        (click)="filterByCategory(categorie.description, categorie.idMenu)">
         {{categorie.description}}
       </span>
       }
