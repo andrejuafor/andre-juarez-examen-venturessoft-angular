@@ -1,0 +1,18 @@
+header {
+  max-width: 1320px;
+  margin: 0 auto;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1.5em;
+}
+
+.actions-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  app-button {
+    margin-left: 0.5em;
+  }
+}

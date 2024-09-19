@@ -1,0 +1,39 @@
+@import '../../../../assets/branding/colors.scss';
+
+.card-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8e8e8;
+  height: 185px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}
+
+.tag {
+  background-color: $light-yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: $dark-yellow;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 0.2em 1em;
+  left: 16px;
+  top: 172px;
+
+  fa-icon {
+    margin-right: 0.5em;
+  }
+}
+
+.card-body {
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

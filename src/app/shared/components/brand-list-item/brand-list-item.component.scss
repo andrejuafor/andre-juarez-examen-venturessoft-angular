@@ -1,0 +1,79 @@
+@import '../../../../assets/branding/colors.scss';
+
+mat-card {
+  transition: 0.2s;
+  margin-bottom: 0.5em;
+}
+
+mat-card:hover {
+  box-shadow: 0px 3px 5px 0px rgba(109, 109, 109, 0.401);
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 2em;
+}
+
+.card-brand-name {
+  display: flex;
+  align-items: center;
+}
+
+.card-image-wrapper {
+  max-width: 70%;
+}
+
+.card-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8e8e8;
+  height: 115px;
+  margin-right: 1em;
+  overflow: hidden;
+  max-width: 225px;
+  min-width: 225px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.brand-actions-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.tag {
+  background-color: $light-yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $dark-yellow;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 0.2em 1em;
+  margin-right: 2em;
+
+  fa-icon {
+    margin-right: 0.5em;
+  }
+}
+
+@media (max-width: 1020px) {
+  .card-image-wrapper {
+    display: none;
+  }
+
+  .card-wrapper {
+    padding: 1.5em;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-brand-name {
+    margin-bottom: 1em;
+  }
+}

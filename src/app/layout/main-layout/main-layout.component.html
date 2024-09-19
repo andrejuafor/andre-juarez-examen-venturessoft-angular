@@ -1,0 +1,15 @@
+<main class="main-layout">
+  <app-table></app-table>
+  <app-menu></app-menu>
+  <app-brand></app-brand>
+  <app-detail></app-detail>
+</main>
+@if (hasLoginModalActive()) {
+<app-login></app-login>
+}
+@if (hasRegisterModalActive()) {
+<app-register></app-register>
+}
+@if (hasLinkUrCardModalActive()) {
+<app-link-ur-card-modal></app-link-ur-card-modal>
+}

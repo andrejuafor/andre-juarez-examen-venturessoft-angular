@@ -1,0 +1,22 @@
+<section>
+  <div class="container">
+    <div class="title">
+      <h3>
+        {{ 'detail.title' | translate }}
+      </h3>
+    </div>
+    <div class="card-wrapper">
+      @for (coupon of couponsList(); track coupon.idItem) {
+      <div class="card">
+        <app-detail-card-item [brandLogo]="coupon.imagen" [brandImg]="coupon.imagen" [brandName]="coupon?.nombreMarca"
+          [brandPromo]="coupon?.promo_marca">
+        </app-detail-card-item>
+      </div>
+      }
+    </div>
+    <div class="detail-footer">
+      <app-button [type]="'flat'" [title]="'navbar.link_your_card' | translate" [icon]="'keyboard_arrow_right'"
+        (click)="linkUrCardModalService.showLinkCardModal(true);"></app-button>
+    </div>
+  </div>
+</section>

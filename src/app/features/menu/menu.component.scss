@@ -1,0 +1,70 @@
+@import '../../../assets/branding/colors.scss';
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
+.container {
+  width: 80%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+
+  h2 {
+    font-size: 4em;
+    text-align: center;
+    line-height: 1;
+
+    span {
+      color: $bright-blue;
+      font-size: 1em;
+    }
+  }
+}
+
+.categories-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.category-chip--item {
+  background-color: $light-gray;
+  padding: 0.5em 1em;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0.5em;
+  transition: 0.2s;
+
+  &.active {
+    background-color: $gray;
+    color: $white;
+  }
+}
+
+.category-chip--item:hover {
+  background-color: $gray;
+  color: $white;
+}
+
+@media (max-width: 580px) {
+  .title {
+    margin-bottom: 2em;
+
+    h2 {
+      font-size: 2.5em;
+    }
+  }
+
+  .container {
+    width: 95%;
+  }
+}

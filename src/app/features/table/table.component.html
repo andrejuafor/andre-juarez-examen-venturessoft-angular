@@ -1,0 +1,40 @@
+<section>
+  <div class="container">
+    <div class="title">
+      <h2>
+        {{ 'table.title' | translate }} <span>{{ 'table.title_blue' | translate }}</span> {{ 'table.title_end' |
+        translate }}
+      </h2>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <tr class="table-title-row">
+          <th></th>
+          <th>{{ 'table.column_title_1' | translate }}</th>
+          <th>{{ 'table.column_title_2' | translate }}</th>
+        </tr>
+        @for (item of list; track item) {
+        <tr class="table-items-row">
+          <td class="table-items-row--first__column">{{ 'table.row_items.' + item.title | translate }}</td>
+          <td>
+            @if (item.no_card_status){
+            <fa-icon class="check-icon" [icon]="faCircleCheck">
+            </fa-icon>
+            }
+          </td>
+          <td>
+            @if (item.link_card_status){
+            <fa-icon class="check-icon" [icon]="faCircleCheck">
+            </fa-icon>
+            }
+          </td>
+        </tr>
+        }
+      </table>
+    </div>
+    <div class="table-actions-wrapper">
+      <app-button [type]="'flat'" [title]="'navbar.link_your_card' | translate" [icon]="'keyboard_arrow_right'"
+        (click)="linkUrCardModalService.showLinkCardModal(true);"></app-button>
+    </div>
+  </div>
+</section>
